@@ -60,7 +60,7 @@ const BugForm = ({ bugToEdit, setBugToEdit, open, onClose }) => {
       status: "Open",
       priority: "Medium",
     });
-    onClose(); // Close the dialog after submit
+    onClose(); 
   };
 
   return (

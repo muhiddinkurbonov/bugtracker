@@ -26,6 +26,7 @@ export const deleteBug = createAsyncThunk("bugs/deleteBug", async (id) => {
   return id;
 });
 
+
 const bugsSlice = createSlice({
   name: "bugs",
   initialState: {
@@ -75,3 +76,5 @@ const bugsSlice = createSlice({
 });
 
 export default bugsSlice.reducer;
+
+

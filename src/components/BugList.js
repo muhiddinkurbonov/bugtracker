@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Paper, Grid } from "@mui/material";
+import { Box, Typography, Paper } from "@mui/material";
 import BugItem from "./BugItem";
 
 const BugList = ({ bugs, onEdit }) => {
@@ -13,32 +13,25 @@ const BugList = ({ bugs, onEdit }) => {
   ];
 
   return (
-    <Box sx={{ m: 2 }}>
-      <Grid container spacing={2}>
-        {statusColumns.map((column) => (
-          <Grid
-            item
-            xs={12}
-            md={4}
-            key={column.status}
-            sx={{
-              width: {
-                xs: "100%",
-                md: "30%",
-              },
-            }}
-          >
-            <Paper sx={{ p: 2, minHeight: "400px", width: "100%" }}>
-              <Typography variant="h6" gutterBottom>
-                {column.status} ({column.bugs.length})
-              </Typography>
-              {column.bugs.map((bug) => (
-                <BugItem key={bug._id} bug={bug} onEdit={onEdit} />
-              ))}
-            </Paper>
-          </Grid>
-        ))}
-      </Grid>
+    <Box sx={{ m: 2, display: "flex", gap: 2, flexWrap: "wrap" }}>
+      {statusColumns.map((column) => (
+        <Box
+          key={column.status}
+          sx={{
+            flex: "1 1 30%", 
+            minWidth: { xs: "100%", md: "300px" },
+          }}
+        >
+          <Paper sx={{ p: 2, minHeight: "400px", width: "100%" }}>
+            <Typography variant="h6" gutterBottom>
+              {column.status} ({column.bugs.length})
+            </Typography>
+            {column.bugs.map((bug) => (
+              <BugItem key={bug._id} bug={bug} onEdit={onEdit} />
+            ))}
+          </Paper>
+        </Box>
+      ))}
     </Box>
   );
 };
